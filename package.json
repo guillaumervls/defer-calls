@@ -1,0 +1,25 @@
+{
+  "name": "defer-calls",
+  "version": "1.0.0",
+  "description": "Defer calls to an object's method, then executes them all when you give the signal",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/guillaumervls/defer-calls.git"
+  },
+  "keywords": [
+    "defer",
+    "calls",
+    "method",
+    "delay"
+  ],
+  "author": "guillaumervls",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/guillaumervls/defer-calls/issues"
+  },
+  "homepage": "https://github.com/guillaumervls/defer-calls"
+}
