@@ -18,20 +18,24 @@ var guy = {
 
 guy.sayHello('you'); // => Hello you
 
-var helloSignal = deferMethod(guy, 'sayHello');
+var helloWaiting = deferMethod(guy, 'sayHello');
 
 // Hold it...
 guy.sayHello('world'); // => undefined
 guy.sayHello('everyone'); // => undefined
 
-helloSignal.callsList; // => [['world'], ['everyone']];
+helloWaiting.callsList; // => [['world'], ['everyone']];
 // WARNING : ['world'] and ['everyone'] are "arguments arrays" i.e. not real Arrays
 // See here : https://developer.mozilla.org/docs/Web/JavaScript/Reference/Fonctions/arguments
 
 // Then give the signal!
-helloSignal();
+helloWaiting.execAll();
 // => Hello world
 // => Hello everyone
+
+// After that...
+helloWaiting.execAll(); // Noop
+helloWaiting.callsList; // []
 ```
 
 ## TODO
