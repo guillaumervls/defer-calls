@@ -36,6 +36,9 @@ helloWaiting.execAll();
 // After that...
 helloWaiting.execAll(); // Noop
 helloWaiting.callsList; // []
+
+// Everything is back to normal
+guy.sayHello('Kitty'); // => Hello Kitty
 ```
 
 ## TODO
