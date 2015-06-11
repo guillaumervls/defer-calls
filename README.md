@@ -12,33 +12,35 @@ var deferMethod = require('defer-calls').method;
 
 var guy = {
   sayHello: function(name) {
-    console.log('Hello ' + name);
+    return 'Hello ' + name;
   }
 };
 
-guy.sayHello('you'); // => Hello you
+guy.sayHello('you'); // => 'Hello you'
 
-var helloWaiting = deferMethod(guy, 'sayHello');
+var helloWaiting = deferMethod(guy, 'sayHello', function (name) {
+  return 'Wait ' + name;
+});
+// The 3rd arg is the temporary behavior, if you just want to return a value,
+// you can pass this value instead of a function.
 
 // Hold it...
-guy.sayHello('world'); // => undefined
-guy.sayHello('everyone'); // => undefined
+guy.sayHello('world'); // => 'Wait world'
+guy.sayHello('everyone'); // => 'Wait everyone'
 
 helloWaiting.callsList; // => [['world'], ['everyone']];
 // WARNING : ['world'] and ['everyone'] are "arguments arrays" i.e. not real Arrays
 // See here : https://developer.mozilla.org/docs/Web/JavaScript/Reference/Fonctions/arguments
 
 // Then give the signal!
-helloWaiting.execAll();
-// => Hello world
-// => Hello everyone
+helloWaiting.execAll() // => ['Hello world', 'Hello everyone']
 
 // After that...
 helloWaiting.execAll(); // Noop
 helloWaiting.callsList; // []
 
 // Everything is back to normal
-guy.sayHello('Kitty'); // => Hello Kitty
+guy.sayHello('Kitty'); // => 'Hello Kitty'
 ```
 
 ## TODO

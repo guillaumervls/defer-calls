@@ -1,6 +1,6 @@
 {
   "name": "defer-calls",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Defer calls to an object's method, then executes them all when you give the signal",
   "main": "index.js",
   "scripts": {
